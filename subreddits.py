@@ -1,15 +1,16 @@
-import requests
+import requests, os
 
 ##############OAuth authentication###############
-CLIENT_ID = "wUL2t3Wa6pHb_emcPYkVhQ"
-SECRET_KEY = "aL-Q5NMgXsLiHuD_SXwT7B4MM1bvwQ"
+
+CLIENT_ID = os.environ.get('REDDIT_CLIENT_ID')
+SECRET_KEY = os.environ.get('REDDIT_SECRET_KEY')
 
 auth = requests.auth.HTTPBasicAuth(CLIENT_ID, SECRET_KEY)
 
 data = {
     'grant_type': "password",
-    'username': 'MoRamad',
-    'password': 'linkato12'
+    'username': os.environ.get('REDDIT_USERNAME'),
+    'password': os.environ.get('REDDIT_PW')
 }
 
 headers = {"User-Agent": 'API/business/0.01'}
